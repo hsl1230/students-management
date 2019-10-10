@@ -2,5 +2,199 @@
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
   "newProjectRoot": "projects",
-  "projects": {}
+  "projects": {
+    "students-management-lib-fe": {
+      "root": "projects/students-management-lib-fe",
+      "sourceRoot": "projects/students-management-lib-fe/src",
+      "projectType": "library",
+      "prefix": "sm",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/students-management-lib-fe/tsconfig.lib.json",
+            "project": "projects/students-management-lib-fe/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-builders/jest:run",
+          "options": {
+            "tsConfig": "projects/students-management-lib-fe/tsconfig.spec.json",
+            "no-cache": true,
+            "reporters": "jest-junit"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/students-management-lib-fe/tsconfig.lib.json",
+              "projects/students-management-lib-fe/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "students-management-element": {
+      "root": "projects/students-management-element/",
+      "sourceRoot": "projects/students-management-element/src",
+      "projectType": "application",
+      "prefix": "henry",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/students-management-element",
+            "index": "projects/students-management-element/src/index.html",
+            "main": "projects/students-management-element/src/main.ts",
+            "polyfills": "projects/students-management-element/src/polyfills.ts",
+            "tsConfig": "projects/students-management-element/tsconfig.app.json",
+            "assets": [
+              "projects/students-management-element/src/favicon.ico",
+              "projects/students-management-element/src/assets",
+              {
+                "glob": "**/*",
+                "input": "dist/students-management-lib-fe/assets/i18n",
+                "output": "/assets/i18n/students-management"
+              },
+              {
+                "glob": "**/*",
+                "input": "dist/students-management-lib-fe/assets/svg",
+                "output": "/assets/svg/students-management"
+              }
+            ],
+            "styles": [
+              "projects/students-management-element/src/styles.scss",
+              "node_modules/bootstrap/dist/css/bootstrap.css"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/students-management-element/src/environments/environment.ts",
+                  "with": "projects/students-management-element/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "students-management-element:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "students-management-element:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "students-management-element:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-builders/jest:run",
+          "options": {
+            "polyfills": "projects/students-management-element/src/polyfills.ts",
+            "tsConfig": "projects/students-management-element/tsconfig.spec.json",
+            "no-cache": true,
+            "reporters": "jest-junit",
+            "styles": [
+              "projects/students-management-element/src/styles.scss",
+              "node_modules/bootstrap/dist/css/bootstrap.css"
+            ],
+            "scripts": [],
+            "assets": [
+              "projects/students-management-element/src/favicon.ico",
+              "projects/students-management-element/src/assets",
+              {
+                "glob": "**/*",
+                "input": "dist/students-management-lib-fe/assets/i18n",
+                "output": "/assets/i18n/students-management"
+              },
+              {
+                "glob": "**/*",
+                "input": "dist/students-management-lib-fe/assets/svg",
+                "output": "/assets/svg/students-management"
+              }
+            ]
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/students-management-element/tsconfig.app.json",
+              "projects/students-management-element/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "students-management-element-e2e": {
+      "root": "projects/students-management-element-e2e/",
+      "projectType": "application",
+      "prefix": "",
+      "architect": {
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/students-management-element-e2e/protractor.conf.js",
+            "devServerTarget": "students-management-element:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "students-management-element:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": "projects/students-management-element-e2e/tsconfig.e2e.json",
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "students-management-lib-fe",
+  "schematics": {
+    "@schematics/angular:component": {
+      "styleext": "scss"
+    },
+    "@nrwl/schematics:component": {
+      "styleext": "scss"
+    }
+  }
 }

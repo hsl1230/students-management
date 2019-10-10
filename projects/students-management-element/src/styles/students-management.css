@@ -1,0 +1,286 @@
+.bootstrap-row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: 0;
+  margin-left: 0;
+}
+
+body .row {
+  display: block;
+}
+
+.button {
+  background-color: #83ba3b;
+  padding: 0.78571429rem 1.71428571rem;
+  font-size: 1rem;
+  cursor: pointer;
+  font-family: "Open Sans", Arial, sans-serif;
+  font-weight: normal;
+  line-height: normal;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  border-color: #69952f;
+  color: #FFFFFF;
+  transition: background-color 300ms ease-out;
+}
+
+.button:hover {
+  background-color: #97e235;
+}
+
+.title {
+  font-family: "Open Sans", Arial, sans-serif;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 38px;
+  font-size: 36px;
+  text-align: center;
+  color: #3BA2C2;
+  margin-bottom: 30px;
+}
+
+div.card {
+  padding: 15px 20px 0px 20px;
+  margin-bottom: 30px;
+}
+
+.text {
+  font-family: "Open Sans", Arial, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 22px;
+  font-size: 14px;
+  color: #2F2F2F;
+}
+
+.center-text {
+  display: block;
+  text-align: center;
+}
+
+.bold-text {
+  font-weight: 600;
+}
+
+.content {
+  font-family: "Open Sans", Arial, sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  line-height: 25px;
+  font-size: 18px;
+  color: #2F2F2F;
+  height: 60px;
+}
+
+.content > span {
+  display: block;
+  margin-top: 22px;
+}
+
+a.left-icon-button, a.right-icon-button {
+  background-size: 100% 100%;
+  width: 118px;
+  height: 38px;
+  display: block;
+}
+
+.big-icon {
+  background-size: contain;
+  height: 150px;
+  min-width: 150px;
+  margin-bottom: 15px;
+}
+
+.medium-icon {
+  background-size: contain;
+  height: 105px;
+  min-width: 105px;
+  margin-bottom: 15px;
+}
+
+.small-icon {
+  background-size: contain;
+  height: 60px;
+  max-width: 60px;
+  margin: 5px 0;
+}
+
+@media screen and (min-width: 640px) {
+  span.left-button, a.left-button, input.left-button[type="submit"] {
+    border-radius: 5px;
+    margin: 30px 0 30px 0;
+    width: -moz-fit-content;
+    width: fit-content;
+  }
+  span.right-button, a.right-button, input.right-button[type="submit"] {
+    border-radius: 5px;
+    float: right;
+    display: block;
+    margin: 30px 0 30px 0;
+    width: -moz-fit-content;
+    width: fit-content;
+  }
+  span.center-button, a.center-button, input.center-button[type="submit"] {
+    border-radius: 5px;
+    display: block;
+    margin: 30px auto 30px auto;
+    width: -moz-fit-content;
+    width: fit-content;
+  }
+  .long-button {
+    min-width: 250px;
+  }
+}
+
+@media screen and (max-width: 639px) {
+  span.left-button, a.left-button, input.left-button[type="submit"],
+  span.center-button, a.center-button, input.center-button[type="submit"],
+  span.right-button, a.right-button, input.right-button[type="submit"] {
+    margin: 30px 0 30px 0;
+    border-radius: 5px;
+    width: 100%;
+  }
+}
+
+
+@media screen and (max-width: 732px) {
+  .small-0 {
+    display: none;
+  }
+  a.left-icon-button, a.right-icon-button {
+    border-radius: 5px;
+    margin: 20px auto 0 auto;
+  }
+}
+
+div.alert-box {
+  margin-bottom: -2px;
+}
+
+@media screen and (min-width: 900px) {
+  div.card {
+    margin-right: 15px;
+  }
+
+  div.alert-box {
+    margin-right: 15px;
+  }
+
+  .page-title {
+    margin-left: -7px;
+  }
+}
+
+@media screen and (min-width: 733px) {
+  #secureIdPart {
+    max-width: 200px;
+    margin: 0 auto;
+    font-size: 12px;
+    color: #3BA2C2;
+  }
+
+  #navigatorCard.card .row {
+    margin: 0 0 0 0;
+  }
+
+  .medium-0 {
+    display: none;
+  }
+
+  a.left-icon-button{
+    margin: 20px 0 0 0;
+  }
+  a.right-icon-button {
+    float: right;
+    margin: 20px 0 0 0;
+  }
+}
+
+.is-disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.is-disabled > a {
+  color: currentColor;
+  display: inline-block;  /* For IE11/ MS Edge bug */
+  pointer-events: none;
+  text-decoration: none;
+}
+
+.page-title {
+  font-family: "Open Sans", Arial, sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  font-size: 27px;
+  text-align: center;
+  padding: 15px;
+  color: #333333;
+}
+
+.card {
+  border: 1px solid #d9dbdb;
+  background-color: #FFFFFF;
+}
+
+.card.additional {
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  /*max-width: 41rem;*/
+  height: auto;
+  padding: 2rem;
+}
+
+.columns.customPadding {
+  padding-left: 1rem;
+  padding-right: 0;
+  padding-top: 0.5rem;
+}
+
+@media only screen and (max-width: 732px) {
+  .columns.customPadding {
+    padding-left: 0rem;
+  }
+}
+
+.columns.customPadding1 {
+  padding-left: 2rem;
+  padding-right: 0;
+  padding-top: 0.5rem;
+}
+
+@media only screen and (max-width: 732px) {
+  .columns.customPadding1 {
+    padding-left: 0rem;
+  }
+}
+
+input[type="checkbox"] {
+  -webkit-appearance: checkbox !important;
+  margin-top: 1.5rem !important;
+  margin-right: 1.0rem !important;
+}
+
+button[type=submit]:disabled, input.button[type=submit]:disabled, button[type=submit]:disabled:hover, input.button[type=submit]:disabled:hover {
+  /* //background-image: url("loading.svg"); */
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: auto 80%;
+  background-color: grey;
+  cursor: not-allowed;
+}
+
+select > option[disabled] {
+  color: black;
+  background-color: lightgray;
+  font-weight: bold;
+}
+
+a.button.disabled {
+  pointer-events: none;
+  cursor: not-allowed;
+}
+

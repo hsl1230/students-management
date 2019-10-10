@@ -1,0 +1,29 @@
+{
+  "MYCASES": {
+    "DASHBOARD": {
+      "SUBJECT": "主题/问题单号",
+      "CATEGORY": "类型",
+      "PROBLEM": "问题",
+      "STATUS": "状态",
+      "CREATE-DATE": "创建日期",
+      "TITLE": "支持",
+      "ALL_CASES": "所有问题单",
+      "HELP-TITLE": "我们随时给您提供帮助",
+      "HELP-TEXT": "请使用我们的问题单功能来获取支持、提出问题或留言。",
+      "BUTTON": {
+        "CREATE-CASE": "创建问题单"
+      },
+      "TAB": {
+        "FAQ": "常见问题",
+        "CALL_US": "联系电话"
+      },
+      "FAQ": {
+        "HOW-CAN-I-VERIFY-MY-NETELLER-ACCOUNT": "如何验证NETELLER账户?",
+        "HOW-TO-ENABLE-LOCATION-SHARING-ON-MY-BROWSER": "如何在浏览器中开启位置共享?",
+        "HOW-CAN-I-WITHDRAW-FUNDS-FROM-MY-NETELLER-ACCOUNT": "如何从NETELLER账户中提取资金？",
+        "WHAT-IS-TWO-STEP-AUTHENTICATION-AND-HOW-TO-USE-IT": "何为两步认证以及如何使用它？",
+        "HOW-DOES-THE-NETELLER-MOBILE-APPLICATION-WORK": "NETELLER手机应用是如何工作的？"
+      }
+    }
+  }
+}
