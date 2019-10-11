@@ -46,7 +46,8 @@
 ### Install @angular-builders/jest and jest
     $> npm i -D jest @types/jest @angular-builders/jest
     
-    
+### Set up rest api service server
+    $> npm i -D express sqlite3 cors body-parser
     
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.0.4.

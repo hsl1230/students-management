@@ -1,0 +1,47 @@
+<h2 style="text-align: center">{{ (student.id ? 'TITLE.UPDATE' : 'TITLE.CREATE') | translate }}</h2>
+<div class="bootstrap-row">
+  <div class="col-sm-12">
+    <mat-card>
+      <div class="bootstrap-row">
+        <div class="col-sm-12" *ngIf="student.id">
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="{{ 'PLACEHOLDER.ID' | translate }}" [(ngModel)]="student.id" readonly>
+          </mat-form-field>
+        </div>
+
+        <div class="col-sm-12">
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="{{ 'PLACEHOLDER.FIRST-NAME' | translate }}" [(ngModel)]="student.firstName">
+          </mat-form-field>
+        </div>
+
+        <div class="col-sm-12">
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="{{ 'PLACEHOLDER.LAST-NAME' | translate }}" [(ngModel)]="student.lastName">
+          </mat-form-field>
+        </div>
+
+        <div class="col-sm-12">
+          <mat-form-field class="example-full-width">
+            <input matInput type="number" placeholder="{{ 'PLACEHOLDER.PHONE-NUMBER' | translate }}" [(ngModel)]="student.phoneNumber">
+          </mat-form-field>
+        </div>
+
+        <div class="col-sm-12">
+          <mat-select placeholder="{{ 'PLACEHOLDER.STATUS' | translate }}"
+                      [(ngModel)]="student.status" name="status">
+            <mat-option *ngFor = "let status of statuses"
+                        [value] = "status.status">
+              {{ 'PLACEHOLDER.' + status.status | uppercase | translate }}
+            </mat-option>
+          </mat-select>
+        </div>
+      </div>
+
+      <div class="col-sm-12">
+        <a class="button center-button" (click)="update()">{{ (student.id ? 'BUTTON.SAVE' : 'BUTTON.CREATE') | translate }}</a>
+      </div>
+
+    </mat-card>
+  </div>
+</div>

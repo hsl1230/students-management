@@ -1,0 +1,21 @@
+.label {
+  text-align: right;
+}
+
+.content {
+  align: left;
+}
+
+@media screen and (max-width: 575px) {
+  .label {
+    text-align: left;
+  }
+
+  .content {
+    align: left;
+  }
+}
+
+.example-full-width {
+  width: 100%;
+}

@@ -1,0 +1,94 @@
+
+td.mat-cell:last-of-type, td.mat-footer-cell:last-of-type, th.mat-header-cell:last-of-type {
+  padding-right: 10px;
+}
+
+td.mat-cell:first-of-type, td.mat-footer-cell:first-of-type, th.mat-header-cell:first-of-type {
+  padding-left: 4px;
+}
+
+div.mat-paginator-range-label {
+  margin: 0 0 0 0;
+}
+
+.arrow {
+  height:16px;
+  background-image: url("/assets/svg/students-management/arrow.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  min-width: 6px;
+  margin-left: 5px;
+  background-size: contain;
+}
+
+.table-head, .student-id {
+  font-size: 12px;
+  color: gray;
+}
+
+.title {
+  width: 100%;
+  display: inline-block;
+  margin-top: 40px;
+}
+
+.mat-column-created {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+tr.mat-row:hover {
+  background-color: aquamarine;
+  cursor: pointer;
+}
+
+@media screen and (min-width: 768px) and (max-width: 860px), (max-width: 639px) {
+  .title {
+    margin-top: 10px;
+    position:  relative;
+  }
+
+  .button {
+    display:block;
+    width: 100%;
+    margin-top: 0;
+    margin-bottom: 20px;
+  }
+}
+
+.cdk-drag-preview {
+  box-sizing: border-box;
+  border-radius: 4px;
+  box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
+  0 8px 10px 1px rgba(0, 0, 0, 0.14),
+  0 3px 14px 2px rgba(0, 0, 0, 0.12);
+}
+
+.cdk-drag-placeholder {
+  opacity: 0;
+}
+
+.cdk-drag-animating {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.mat-row:last-child {
+  border: none;
+}
+
+.cdk-drag-preview {
+  background-color: lightskyblue;
+  width: 100%;
+  display: table-cell;
+  cursor: move;
+}
+
+.cdk-drag-placeholder {
+  background: #ccc;
+  border: dotted 3px #999;
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.mat-table .cdk-drop-list-dragging .mat-row:not(.cdk-drag-placeholder) {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}

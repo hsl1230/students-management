@@ -20,8 +20,6 @@
   },
   "BUTTON": {
     "SAVE": "保存",
-    "CREATE": "新建",
-    "CANCEL": "不用了",
-    "CONFIRM": "好的"
+    "CREATE": "新建"
   }
 }

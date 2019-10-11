@@ -1,14 +1,13 @@
 // Create express app
-var express = require("express")
-var app = express()
-var db = require("./database.js")
+const express = require("express")
+const bodyParser = require('body-parser')
+const cors = require('cors')
+const db = require("./database.js")
 
-// Server port
-var HTTP_PORT = 8070
-// Start server
-app.listen(HTTP_PORT, () => {
-  console.log("Server running on port %PORT%".replace("%PORT%",HTTP_PORT))
-});
+var app = express()
+
+app.use(cors())
+
 // Root endpoint
 app.get("/", (req, res, next) => {
   res.json({"message":"Ok"})
@@ -32,6 +31,20 @@ app.get("/api/students", (req, res, next) => {
   });
 });
 
+app.get("/api/statuses", (req, res, next) => {
+  var sql = "select status from student_status"
+  var params = []
+
+  db.all(sql, params, (err, rows) => {
+    if (err) {
+      res.status(400).json({"error":err.message});
+      return;
+    }
+    console.error(rows.length);
+    res.json(rows)
+  });
+});
+
 app.get("/api/students/:id", (req, res, next) => {
   var sql = "select id, first_name as firstName, last_name as lastName, phone_number as phoneNumber, status from student where id = ?"
   var params = [req.params.id]
@@ -44,7 +57,7 @@ app.get("/api/students/:id", (req, res, next) => {
   });
 });
 
-app.post("/api/students/", (req, res, next) => {
+app.post("/api/students/", bodyParser.json(), (req, res, next) => {
   var errors=[]
   if (!req.body.firstName){
     errors.push("No firstName specified");
@@ -72,8 +85,17 @@ app.post("/api/students/", (req, res, next) => {
   });
 })
 
-app.patch("/api/students/:id", (req, res, next) => {
+function u2N(val) {
+  if (typeof val === undefined) {
+    return null
+  } else {
+    return val
+  }
+}
+
+app.patch("/api/students/:id", bodyParser.json(), (req, res, next) => {
   var data = req.body
+
   db.run(
     `UPDATE student set 
            first_name = COALESCE(?,first_name), 
@@ -81,7 +103,7 @@ app.patch("/api/students/:id", (req, res, next) => {
            phone_number = COALESCE(?,phone_number),
            status = COALESCE(?,status)
            WHERE id = ?`,
-    [data.firstName, data.lastName, data.phoneNumber, status, req.params.id],
+    [data.firstName, data.lastName, data.phoneNumber, data.status, req.params.id],
     function (err, result) {
       if (err){
         res.status(400).json({"error": res.message})
@@ -115,3 +137,9 @@ app.use(function(req, res){
   res.status(404);
 });
 
+// Server port
+var HTTP_PORT = 8070
+// Start server
+app.listen(HTTP_PORT, () => {
+  console.log("Server running on port %PORT%".replace("%PORT%",HTTP_PORT))
+});

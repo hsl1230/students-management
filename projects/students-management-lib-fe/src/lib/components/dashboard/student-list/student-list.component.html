@@ -1,0 +1,50 @@
+<mat-card>
+  <mat-card-title>{{ 'PLACEHOLDER.' + status | uppercase | translate }}</mat-card-title>
+  <ng-container *ngIf="dataSource && dataSource.data.length > 0; else showNoCase">
+    <table mat-table [dataSource]="dataSource" style="width:100%"
+           cdkDropList [cdkDropListData]="students" (cdkDropListDropped)="drop($event)">
+      <!-- Name Column -->
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef class="table-head"> {{ 'PLACEHOLDER.ID' | translate }}
+        </th>
+        <td mat-cell *matCellDef="let element" (click)="update(element)">
+          <div title="{{ 'TITLE.UPDATE' | translate }}">
+            <div>{{element.firstName}} {{element.lastName}}</div>
+            <div class="student-id">{{element.id}}</div>
+            </div>
+        </td>
+      </ng-container>
+
+      <!-- lastName Column -->
+      <ng-container matColumnDef="phoneNumber">
+        <th mat-header-cell *matHeaderCellDef class="table-head"> {{ 'PLACEHOLDER.PHONE-NUMBER' | translate }}
+        </th>
+        <td mat-cell *matCellDef="let element"> {{element.phoneNumber}}</td>
+      </ng-container>
+
+      <!-- Status Column -->
+      <ng-container matColumnDef="status">
+        <th mat-header-cell *matHeaderCellDef class="table-head"> {{ 'PLACEHOLDER.STATUS' | translate }}</th>
+        <td mat-cell *matCellDef="let element"> {{element.status}}</td>
+      </ng-container>
+
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="symbol">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let element" (click)="delete(element)">
+          <div class="arrow" title="{{ 'TITLE.DELETE' | translate }}"></div>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;" cdkDrag></tr>
+    </table>
+  </ng-container>
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+  <ng-template #showNoCase>
+    <div class="title">{{ 'TITLE.HELP-TITLE' | translate }}</div>
+    <div class="bootstrap-row center-text">
+      {{ 'TITLE.HELP-TEXT' | translate }}
+    </div>
+  </ng-template>
+</mat-card>

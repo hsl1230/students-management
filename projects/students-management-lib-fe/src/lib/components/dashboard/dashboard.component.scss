@@ -1,0 +1,35 @@
+.mat-card {
+  margin: 15px 0;
+}
+
+.title {
+  width: 100%;
+  display: inline-block;
+}
+
+.align-title {
+  margin-top: 36px;
+  left: 0;
+}
+
+@media only screen and (min-width: 768px) and (max-width: 860px), (min-width: 900px) and (max-width: 1024px), (max-width: 639px) {
+  .title {
+    margin-top: 10px;
+    position:  relative;
+  }
+
+  .button {
+    color: #FFFFFF;
+    display:block;
+    width: 100%;
+    margin-top: 0;
+    margin-bottom: 20px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .no-padding {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}

@@ -1,0 +1,22 @@
+<div class="bootstrap-row">
+  <div class="col-sm-12">
+<div style="width:100%;display:flex;">
+  <div class="title align-title">{{ 'TITLE.DASHBOARD' | translate }}</div>
+  <a class="button right-button dash-btn" (click)="createStudent()">
+    <span style="white-space: nowrap;">{{ 'BUTTON.CREATE' | translate }}</span>
+  </a>
+</div>
+  </div>
+</div>
+
+<div class="bootstrap-row" cdkDropListGroup>
+  <div class="col-md-4 col-sm-12">
+    <sm-student-list status="active"></sm-student-list>
+  </div>
+  <div class="col-md-4 col-sm-12">
+    <sm-student-list status="delinquent"></sm-student-list>
+  </div>
+  <div class="col-md-4 col-sm-12">
+    <sm-student-list status="dropped"></sm-student-list>
+  </div>
+</div>

@@ -1,29 +1,27 @@
 {
-  "MYCASES": {
-    "DASHBOARD": {
-      "SUBJECT": "SUBJECT/CASE ID",
-      "CATEGORY": "Category",
-      "PROBLEM": "Problem",
-      "STATUS": "STATUS",
-      "CREATE-DATE": "CREATED",
-      "TITLE": "Support",
-      "ALL_CASES": "All Cases",
-      "HELP-TITLE": "We are here to help you",
-      "HELP-TEXT": "Please use our cases feature to contact support, ask questions or leave us messages.",
-      "BUTTON": {
-        "CREATE-CASE": "Create a case"
-      },
-      "TAB": {
-        "FAQ": "FAQ",
-        "CALL_US": "Call us"
-      },
-      "FAQ": {
-        "HOW-CAN-I-VERIFY-MY-NETELLER-ACCOUNT": "How can I verify my NETELLER Account?",
-        "HOW-TO-ENABLE-LOCATION-SHARING-ON-MY-BROWSER": "How to enable location sharing on my browser?",
-        "HOW-CAN-I-WITHDRAW-FUNDS-FROM-MY-NETELLER-ACCOUNT": "How can I withdraw funds from my NETELLER Account?",
-        "WHAT-IS-TWO-STEP-AUTHENTICATION-AND-HOW-TO-USE-IT": "What is two-step authentication and how to use it?",
-        "HOW-DOES-THE-NETELLER-MOBILE-APPLICATION-WORK": "How does the NETELLER mobile application work?"
-      }
-    }
+  "PLACEHOLDER": {
+    "ACTIVE": "Active",
+    "DELINQUENT": "Delinquent",
+    "DROPPED": "Dropped",
+    "ID": "Id",
+    "FIRST-NAME": "First Name",
+    "LAST-NAME": "Last Name",
+    "PHONE-NUMBER": "Phone Number",
+    "STATUS": "Status"
+  },
+  "TITLE": {
+    "UPDATE": "Update student",
+    "CREATE": "Create student",
+    "DASHBOARD": "Student Management",
+    "DELETE": "Delete Confirmation",
+    "HELP-TITLE": "We are here to help you",
+    "HELP-TEXT": "Please use our cases feature to contact support, ask questions or leave us messages.",
+    "CONFIRMATION": "Are you sure to delete {{firstName}} {{lastName}} with Id of {{id}}?"
+  },
+  "BUTTON": {
+    "SAVE": "Save",
+    "CREATE": "Create",
+    "CANCEL": "No, Thanks",
+    "CONFIRM": "Yes, Please"
   }
 }
