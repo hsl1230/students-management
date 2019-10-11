@@ -1,4 +1,27 @@
 # StudentsManagement
+
+## How to build
+  Create a directory named workspace for example. Clone the project from github.
+  
+  Goes into the project root and run
+    $> npm install
+    $> npm run build-app
+
+## How to run
+  Go into static folder and run
+    $> node rest-api-sever.sh
+
+  Open a new terminal, change to the project root directory and run
+    $> npm run start_server
+
+  Open a browser window and type in http://localhost:4200 if it does not open one automatically.
+
+# Design considerations 
+  International language support, can be used as a module in any angular app and as a element in legacy web apps as well.
+
+  All features available.
+
+
 ## New workspace without creating the application
     $> ng new students-management --style=scss --routing --create-application=false
     
