@@ -1,25 +1,25 @@
 // Create express app
-const express = require("express")
-const bodyParser = require('body-parser')
-const cors = require('cors')
-const db = require("./database.js")
+const express = require("express");
+const bodyParser = require('body-parser');
+const cors = require('cors');
+const db = require("./database.js");
 
-var app = express()
+var app = express();
 
-app.use(cors())
+app.use(cors());
 
 // Root endpoint
 app.get("/", (req, res, next) => {
-  res.json({"message":"Ok"})
+  req.get({url: "/students-management/index.html", headers: req.headers});
 });
 
 app.get("/api/students", (req, res, next) => {
-  var sql = "select id, first_name as firstName, last_name as lastName, phone_number as phoneNumber, status from student"
-  var params = []
-  var status = req.query.status
+  var sql = "select id, first_name as firstName, last_name as lastName, phone_number as phoneNumber, status from student";
+  var params = [];
+  var status = req.query.status;
   if (status) {
-    params.push(status)
-    sql += " where status = ?"
+    params.push(status);
+    sql += " where status = ?";
   }
 
   db.all(sql, params, (err, rows) => {
@@ -27,13 +27,13 @@ app.get("/api/students", (req, res, next) => {
       res.status(400).json({"error":err.message});
       return;
     }
-    res.json(rows)
+    res.json(rows);
   });
 });
 
 app.get("/api/statuses", (req, res, next) => {
-  var sql = "select status from student_status"
-  var params = []
+  var sql = "select status from student_status";
+  var params = [];
 
   db.all(sql, params, (err, rows) => {
     if (err) {
@@ -41,19 +41,19 @@ app.get("/api/statuses", (req, res, next) => {
       return;
     }
     console.error(rows.length);
-    res.json(rows)
+    res.json(rows);
   });
 });
 
 app.get("/api/students/:id", (req, res, next) => {
-  var sql = "select id, first_name as firstName, last_name as lastName, phone_number as phoneNumber, status from student where id = ?"
-  var params = [req.params.id]
+  var sql = "select id, first_name as firstName, last_name as lastName, phone_number as phoneNumber, status from student where id = ?";
+  var params = [req.params.id];
   db.get(sql, params, (err, row) => {
     if (err) {
       res.status(400).json({"error":err.message});
       return;
     }
-    res.json(row)
+    res.json(row);
   });
 });
 
@@ -69,32 +69,24 @@ app.post("/api/students/", bodyParser.json(), (req, res, next) => {
     res.status(400).json({"error":errors.join(",")});
     return;
   }
-  var data = req.body
-  var sql ='INSERT INTO student (first_name, last_name, phone_number, status) VALUES (?,?,?,?)'
-  var params =[data.firstName, data.lastName, data.phoneNumber, data.status]
+  var data = req.body;
+  var sql ='INSERT INTO student (first_name, last_name, phone_number, status) VALUES (?,?,?,?)';
+  var params =[data.firstName, data.lastName, data.phoneNumber, data.status];
   db.run(sql, params, function (err, result) {
     if (err){
-      res.status(400).json({"error": err.message})
+      res.status(400).json({"error": err.message});
       return;
     }
     res.json({
       "message": "success",
       "data": data,
       "id" : this.lastID
-    })
+    });
   });
 })
 
-function u2N(val) {
-  if (typeof val === undefined) {
-    return null
-  } else {
-    return val
-  }
-}
-
 app.patch("/api/students/:id", bodyParser.json(), (req, res, next) => {
-  var data = req.body
+  var data = req.body;
 
   db.run(
     `UPDATE student set 
@@ -106,14 +98,14 @@ app.patch("/api/students/:id", bodyParser.json(), (req, res, next) => {
     [data.firstName, data.lastName, data.phoneNumber, data.status, req.params.id],
     function (err, result) {
       if (err){
-        res.status(400).json({"error": res.message})
+        res.status(400).json({"error": res.message});
         return;
       }
       res.json({
         message: "success",
         data: data,
         changes: this.changes
-      })
+      });
     });
 })
 
@@ -123,23 +115,26 @@ app.delete("/api/students/:id", (req, res, next) => {
     req.params.id,
     function (err, result) {
       if (err){
-        res.status(400).json({"error": res.message})
+        res.status(400).json({"error": res.message});
         return;
       }
-      res.json({"message":"deleted", changes: this.changes})
+      res.json({"message":"deleted", changes: this.changes});
     });
 })
 
 // Insert here other API endpoints
 
 // Default response for any other request
-app.use(function(req, res){
-  res.status(404);
-});
+// app.use(function(req, res){
+//   res.status(404);
+// });
+
+app.use("/students-management", express.static(__dirname + "/index"));
+app.use("/students-management", express.static(__dirname + "/students-management"));
 
 // Server port
-var HTTP_PORT = 8070
+var HTTP_PORT = 8070;
 // Start server
 app.listen(HTTP_PORT, () => {
-  console.log("Server running on port %PORT%".replace("%PORT%",HTTP_PORT))
+  console.log("Server running on port %PORT%".replace("%PORT%",HTTP_PORT));
 });
