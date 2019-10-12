@@ -17,7 +17,7 @@
     "build_app": "ng build students-management-element --prod --base-href /students-management/ && node process-app-build-files.js",
     "build-app": "npm run install-lib && npm run build_app",
     "build-all": "npm install && npm run build-app",
-    "start_server": "node static-file-server.js",
+    "start_server": "node ./static/rest-api-server.js",
     "start-server": "npm run build-app && npm run start_server",
     "start_app": "ng serve students-management-element --sourceMap=true",
     "start-app": "npm run build_lib && npm run start_app"
