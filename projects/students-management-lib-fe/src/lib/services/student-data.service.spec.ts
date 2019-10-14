@@ -1,11 +1,11 @@
-import { TestBed } from '@angular/core/testing';
-import {HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
+import { inject, TestBed } from '@angular/core/testing';
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 
 import { StudentDataService } from './student-data.service';
 
 describe('StudentDataService', () => {
   let httpMock: HttpTestingController;
-  let mycaseDataService: StudentDataService;
+  let studentDataService: StudentDataService;
 
   beforeEach(() => TestBed.configureTestingModule({
     imports: [
@@ -13,18 +13,18 @@ describe('StudentDataService', () => {
     ],
     providers: [
       StudentDataService,
-      {provide: 'libEnv', useValue: { baseUrl: '/api/'}}
+      { provide: 'libEnv', useValue: { baseUrl: '/api/' } }
     ]
   }));
 
   beforeEach(inject([
-      HttpTestingController,
-      MycaseDataService
-    ],
+    HttpTestingController,
+    StudentDataService
+  ],
     (be: HttpTestingController,
-     service: MycaseDataService) => {
+      service: StudentDataService) => {
       httpMock = be;
-      mycaseDataService = service;
+      studentDataService = service;
     }
   ));
 
@@ -33,92 +33,31 @@ describe('StudentDataService', () => {
     expect(service).toBeTruthy();
   });
 
-  it('getMessages(10001) should return messages ', () => {
+  it('getStudents(\'active\') should return active students ', () => {
     const responseBody: any = [
-      {
-        customerComment: true,
-        body: 'This is my problem, ',
-        commentTime: '2019-02-01 09:01'
-      },
-      {
-        customerComment: true,
-        body: 'seems like my prepaid card is not working!',
-        commentTime: '2019-02-01 09:02'
-      },
-      {
-        customerComment: false,
-        body: 'Very sorry to hear that, we can definitly help you to figure out.',
-        commentTime: '2019-02-01 09:06'
-      }
+      { "id": 1, "firstName": "henry-0", "lastName": "huang", "phoneNumber": 12345678, "status": "active" },
+      { "id": 2, "firstName": "henry-1", "lastName": "huang", "phoneNumber": 12345679, "status": "active" },
+      { "id": 3, "firstName": "henry-2", "lastName": "huang", "phoneNumber": 12345680, "status": "active" },
+      { "id": 4, "firstName": "henry-3", "lastName": "huang", "phoneNumber": 12345681, "status": "active" },
+      { "id": 5, "firstName": "henry-4", "lastName": "huang", "phoneNumber": 12345682, "status": "active" },
+      { "id": 6, "firstName": "henry-5", "lastName": "huang", "phoneNumber": 12345683, "status": "active" },
+      { "id": 7, "firstName": "henry-6", "lastName": "huang", "phoneNumber": 12345684, "status": "active" },
+      { "id": 8, "firstName": "henry-7", "lastName": "huang", "phoneNumber": 12345685, "status": "active" },
+      { "id": 9, "firstName": "henry-8", "lastName": "huang", "phoneNumber": 12345686, "status": "active" }
     ];
 
-    mycaseDataService.getMessages('10001').subscribe( (response: any) => {
+    studentDataService.getStudents('active').subscribe((response: any) => {
       expect(response).toEqual(responseBody);
     });
-    httpMock.expectOne('/api/cases/10001/messages').flush(responseBody, { status: 200, statusText: 'Ok' });
+    httpMock.expectOne('/api/students?status=active').flush(responseBody, { status: 200, statusText: 'Ok' });
   });
 
-  it('getMycases() should return cases ', () => {
-    const responseBody: any = [
-      {
-        parentId: '344555',
-        caseNumber: '10001',
-        subject: 'Account-Balance',
-        origin: 'Neteller',
-        status: 'Closed',
-        createdDate: '2016-02-01',
-        messages: []
-      },
-      {
-        parentId: '344555',
-        caseNumber: '10002',
-        subject: 'Payments-Failed transaction amount',
-        origin: 'Neteller',
-        status: 'Open',
-        createdDate: '2016-02-01'
-      },
-      {
-        parentId: '344555',
-        caseNumber: '10003',
-        subject: 'Card-Skrill card',
-        origin: 'Neteller',
-        createdDate: '2016-02-01'
-      },
-      {
-        parentId: '344555',
-        caseNumber: '10004',
-        subject: 'Security-Password',
-        origin: 'Neteller',
-        createdDate: '2016-02-01'
-      },
-      {
-        parentId: '344555',
-        caseNumber: '10005',
-        subject: 'Security-Password',
-        origin: 'Neteller',
-        createdDate: '2016-02-01'
-      },
-      {
-        parentId: '344555',
-        caseNumber: '10006',
-        subject: 'Account-Balance',
-        origin: 'Neteller',
-        createdDate: '2016-02-01'
-      }
-    ];
+  it('getStatuses() should return all statuses', () => {
+    const responseBody: any = [{"status":"active"},{"status":"delinquent"},{"status":"dropped"}];
 
-    mycaseDataService.getMycases().subscribe((response: any) => {
+    studentDataService.getStatuses().subscribe((response: any) => {
       expect(response).toEqual(responseBody);
     });
-    httpMock.expectOne('/api/cases').flush(responseBody, { status: 200, statusText: 'Ok' });
+    httpMock.expectOne('/api/statuses').flush(responseBody, { status: 200, statusText: 'Ok' });
   });
-
-  it('closeCase() should return an object', () => {
-    mycaseDataService.closeCase('10001').subscribe( res => {
-      expect(typeof res).toEqual('Closed');
-    });
-    httpMock.expectOne('/api/cases/10001/close').flush('Closed', { status: 200, statusText: 'Ok' });
-  });
-
-
 });

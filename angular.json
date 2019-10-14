@@ -20,8 +20,7 @@
           "builder": "@angular-builders/jest:run",
           "options": {
             "tsConfig": "projects/students-management-lib-fe/tsconfig.spec.json",
-            "no-cache": true,
-            "reporters": "jest-junit"
+            "no-cache": true
           }
         },
         "lint": {
@@ -123,7 +122,6 @@
             "polyfills": "projects/students-management-element/src/polyfills.ts",
             "tsConfig": "projects/students-management-element/tsconfig.spec.json",
             "no-cache": true,
-            "reporters": "jest-junit",
             "styles": [
               "projects/students-management-element/src/styles.scss",
               "node_modules/bootstrap/dist/css/bootstrap.css"

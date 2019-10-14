@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Student } from '../../interfaces/student';
 import { StudentDataService } from '../../services/student-data.service';
 import { Router } from '@angular/router';
-import {MatTableDataSource} from "@angular/material";
+import {MatTableDataSource} from '@angular/material';
 
 @Component({
   selector: 'sm-student-update',

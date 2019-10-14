@@ -2,7 +2,7 @@ import { Component, OnInit, Input, ViewChild, HostListener } from '@angular/core
 import { Student } from '../../../interfaces/student';
 import { Router } from '@angular/router';
 import { StudentDataService } from '../../../services/student-data.service';
-import {MatDialog, MatPaginator, MatTableDataSource} from '@angular/material';
+import { MatDialog, MatPaginator, MatTableDataSource } from '@angular/material';
 import { CdkDragDrop } from '@angular/cdk/drag-drop';
 import { OnDestroy } from '@angular/core/src/metadata/lifecycle_hooks';
 import { DeleteConfirmDialogComponent } from './delete-confirm-dialog/delete-confirm-dialog.component';
