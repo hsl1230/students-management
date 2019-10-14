@@ -1,4 +1,6 @@
 # StudentsManagement
+  
+  Refer to [HELP.md](./HELP.md) for more information.
 
 ## Prerequisites
 
@@ -26,4 +28,6 @@
 
     $> npm run start_server
 
-  Open a browser window and type in http://localhost:4200 if it does not open one automatically.
+  Open a browser window and type in http://localhost:4200 if it does not open one automatically to run as an angular app.
+
+  Open a browser window and type in http://localhost:8070/students-management to run as legacy web site.

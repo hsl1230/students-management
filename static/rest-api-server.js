@@ -10,7 +10,7 @@ app.use(cors());
 
 // Root endpoint
 app.get("/", (req, res, next) => {
-  req.get({url: "/students-management/index.html", headers: req.headers});
+  req.get({url: "/students-management/index.html"});
 });
 
 app.get("/api/students", (req, res, next) => {
@@ -89,9 +89,9 @@ app.patch("/api/students/:id", bodyParser.json(), (req, res, next) => {
   var data = req.body;
 
   db.run(
-    `UPDATE student set 
-           first_name = COALESCE(?,first_name), 
-           last_name = COALESCE(?,last_name), 
+    `UPDATE student set
+           first_name = COALESCE(?,first_name),
+           last_name = COALESCE(?,last_name),
            phone_number = COALESCE(?,phone_number),
            status = COALESCE(?,status)
            WHERE id = ?`,
